@@ -18,4 +18,28 @@ public class memoController {
         return "memo/home";
     }
 
+    @RequestMapping(value="/add", method = RequestMethod.GET)
+    public String memoAddPage(Model model) {
+        log.info("TEST :: 메모 홈페이지 접근");
+        return "memo/add";
+    }
+
+    @RequestMapping(value="/edit", method = RequestMethod.GET)
+    public String memoEditPage(Model model) {
+        log.info("TEST :: 메모 홈페이지 접근");
+        return "memo/edit";
+    }
+
+    @RequestMapping(value="/list", method = RequestMethod.GET)
+    public String memoListPage(Model model) {
+        log.info("TEST :: 메모 홈페이지 접근");
+        return "memo/list";
+    }
+
+    @RequestMapping(value="/view", method = RequestMethod.GET)
+    public String memoViewPage(Model model) {
+        log.info("TEST :: 메모 홈페이지 접근");
+        return "memo/view";
+    }
+
 }
