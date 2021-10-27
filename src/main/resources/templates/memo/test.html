@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>테스트용 페이지</title>
+</head>
+<body>
+
+<h1>테스트용 페이지입니다.</h1>
+<textarea name="weditor" id="weditor" rows="10" cols="100"></textarea>
+
+<script type="text/javascript" src="/libs/smarteditor/js/service/HuskyEZCreator.js"></script>
+<script>
+    var oEditors = [];
+    nhn.husky.EZCreator.createInIFrame({
+        oAppRef: oEditors,
+        elPlaceHolder: "weditor",
+        sSkinURI: "/libs/smarteditor/SmartEditor2Skin.html",
+        fCreator: "createSEditor2"
+    })
+</script>
+</body>
+</html>

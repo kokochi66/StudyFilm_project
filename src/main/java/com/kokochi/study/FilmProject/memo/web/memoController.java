@@ -42,4 +42,10 @@ public class memoController {
         return "memo/view";
     }
 
+    @RequestMapping(value = "/test", method = RequestMethod.GET)
+    public String memoTest(Model model) {
+        log.info("TEST ::  메모 테스트 페이지 접근");
+        return "memo/test";
+    }
+
 }
