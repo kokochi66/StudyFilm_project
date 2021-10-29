@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -65,23 +65,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th>1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-            </tr>
-            <tr>
-                <th>2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-            </tr>
-            <tr>
-                <th>3</th>
-                <td>@twitter</td>
-                <td>@twitter</td>
-                <td>@twitter</td>
+            <tr th:each="board : ${boardList}">
+                <th></th>
+                <td th:text="${board.writer}"></td>
+                <td th:text="${board.title}"></td>
+                <td th:text="${board.createdDate}"></td>
             </tr>
             </tbody>
         </table>
