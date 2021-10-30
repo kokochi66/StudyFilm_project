@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko"  xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/memoLayout :: headMain"></head>
+<body id="page-top">
+
+<!-- 상단 내비게이션 -->
+<nav th:replace="fragments/memoLayout :: navbarMain"></nav>
+<!-- 헤더 -->
+<header th:replace="fragments/memoLayout :: headerMain"></header>
+
+<style> /* [::필요::] css 파일로 옮기기 */
+    #memo-list-box .form-group .form-control {padding: 1.25rem;}
+
+</style>
+<!-- Memo-List-box -->
+<section class="page-section bg-light" id="memo-list-box">
+    <div class="container">
+        <div class="text-center">
+            <h2 class="section-heading text-uppercase">게시판 제목이 들어갈 위치</h2>
+            <h3 class="section-subheading text-muted">이 게시판은 ~~입니다.</h3>
+        </div>
+        <button type="button" class="btn btn-info location-href" data-locationHref="/memo/add?id=" th:data-locationHref="${masterId}">글 작성</button>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col" width="10%">번호</th>
+                <th scope="col" width="20%">작성자</th>
+                <th scope="col" width="50%">글 제목</th>
+                <th scope="col" width="20%">작성일자</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="board : ${boardList}">
+                <th></th>
+                <td th:text="${board.writer}"></td>
+                <td th:text="${board.title}"></td>
+                <td th:text="${board.createdDate}"></td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+        </div>
+    </div>
+</section>
+<!-- 푸터 -->
+<footer th:replace="fragments/memoLayout :: footerMain"></footer>
+<!-- 스크립트 -->
+<script th:replace="fragments/memoLayout :: memo-global-script"></script>
+</body>
+</html>

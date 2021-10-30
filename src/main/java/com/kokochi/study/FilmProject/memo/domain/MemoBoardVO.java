@@ -12,7 +12,7 @@ import java.util.Date;
 @Table(name = "memo_board")
 @Getter @Setter
 @DynamicInsert @DynamicUpdate
-public class MemoBoard {
+public class MemoBoardVO {
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,
@@ -22,7 +22,7 @@ public class MemoBoard {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "master_id")
-    private MemoBoardMaster master;       // 게시판 매핑
+    private MemoBoardMasterVO master;       // 게시판 매핑
 
     @Column(nullable = false)
     private String title;                   // 게시글 제목

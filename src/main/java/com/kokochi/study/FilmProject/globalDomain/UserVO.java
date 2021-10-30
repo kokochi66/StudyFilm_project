@@ -13,7 +13,7 @@ import javax.persistence.*;
 @Setter
 @DynamicInsert
 @DynamicUpdate
-public class User {
+public class UserVO {
     @Id
     @GeneratedValue(
             strategy = GenerationType.SEQUENCE,

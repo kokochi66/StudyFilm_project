@@ -1,15 +1,22 @@
 package com.kokochi.study.FilmProject.memo.service;
 
-import com.kokochi.study.FilmProject.memo.domain.MemoBoard;
-import com.kokochi.study.FilmProject.memo.domain.MemoBoardMaster;
+import com.kokochi.study.FilmProject.memo.domain.MemoBoardVO;
+import com.kokochi.study.FilmProject.memo.domain.MemoBoardMasterVO;
+import com.kokochi.study.FilmProject.memo.repo.MemoBoardRepository;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service("memoBoardService")
+@Log4j2
+@RequiredArgsConstructor
 public class MemoBoardService {
 
-    public List<MemoBoard> getMemoBoardListFromMasterId(MemoBoardMaster memoBoardMaster) {
+    private final MemoBoardRepository memoBoardRepository;
+
+    public List<MemoBoardVO> getMemoBoardListFromMasterId(MemoBoardMasterVO memoBoardMaster) {
 
         return null;
     }

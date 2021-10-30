@@ -12,8 +12,14 @@ public class homeController {
 
     @RequestMapping(value="/", method = RequestMethod.GET)
     public String home() {
-        log.info("TEST :: 홈 컨트롤러 매핑");
+        log.info("/ :: 홈 컨트롤러 매핑");
         return "home";
+    }
+
+    @RequestMapping(value="/layout", method = RequestMethod.GET)
+    public String layoutTest() {
+        log.info("/layout :: 레이아웃 테스트");
+        return "layout/mainlayout";
     }
 
 }
