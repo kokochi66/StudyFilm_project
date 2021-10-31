@@ -1,4 +1,15 @@
 
+/* 게시판 폼 디자인 */
+.memo-section-box .form-group .form-control {
+    padding: 1.25rem;
+    margin-bottom: 2rem;
+}
+.memo-section-box .form-group-textarea .form-control {
+    height: 20rem;
+}
+
+
+
 
 /* 게시판 상세보기 페이지 */
 .view-title {
@@ -8,7 +19,7 @@
 }
 .view-info {
     display: flex;
-    justify-content: space-evenly;
+    justify-content: space-between;
 }
 .view-info .view-writer {
 
@@ -18,4 +29,8 @@
 }
 .view-contents {
     margin-top: 100px;
+}
+
+.view-contents * {
+    text-align: left;
 }

@@ -7,67 +7,36 @@
 <nav th:replace="fragments/memoLayout :: navbarMain"></nav>
 <!-- 헤더 -->
 <header th:replace="fragments/memoLayout :: headerMain"></header>
-
-<style> /* [::필요::] css 파일로 옮기기 */
-.memo-section-box .form-group .form-control {
-    padding: 1.25rem;
-    margin-bottom: 2rem;
-}
-.memo-section-box .form-group-textarea .form-control {
-    height: 20rem;
-}
-
-</style>
-
 <section class="page-section bg-light memo-section-box" id="memo-add-box">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">~~ 게시판</h2>
-            <h3 class="section-subheading text-muted">글쓰기</h3>
+            <h2 class="section-heading text-uppercase" th:text="${board.master.name}"></h2>
+            <h3 class="section-subheading text-muted" th:text="${board.master.description}"></h3>
         </div>
-        <form id="memo-add-form" data-sb-form-api-token="API_TOKEN">
+        <form id="memo-edit-form" class="action-form" action="/memo/edit/process" method="post">
+            <input type="hidden" name="id" th:value="${board.id}">
+            <input type="hidden" name="masterId" th:value="${board.master.id}">
             <div class="row align-items-stretch mb-5">
                 <div class="col-md-12">
                     <div class="form-group">
                         <!-- Name input-->
-                        <input class="form-control" id="name" type="text" placeholder="Your Name *" data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="name:required">A name is required.</div>
+                        <input class="form-control" id="title" name="title" type="text" placeholder="게시글 제목을 입력하세요" th:value="${board.title}" />
+                        <div class="invalid-feedback" >A name is required.</div>
                     </div>
                     <div class="form-group">
                         <!-- Email address input-->
-                        <input class="form-control" id="email" type="email" placeholder="Your Email *" data-sb-validations="required,email" />
+                        <input class="form-control" id="writer" name="writer" type="text" placeholder="작성자 이름을 입력하세요" th:value="${board.writer}" />
                         <div class="invalid-feedback" data-sb-feedback="email:required">An email is required.</div>
-                        <div class="invalid-feedback" data-sb-feedback="email:email">Email is not valid.</div>
-                    </div>
-                    <div class="form-group mb-md-0">
-                        <!-- Phone number input-->
-                        <input class="form-control" id="phone" type="tel" placeholder="Your Phone *" data-sb-validations="required" />
-                        <div class="invalid-feedback" data-sb-feedback="phone:required">A phone number is required.</div>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="form-group form-group-textarea mb-md-0">
                         <!-- Message input-->
-                        <textarea class="form-control" id="write-contents" placeholder="Your Message *" data-sb-validations="required"></textarea>
+                        <textarea class="form-control" id="write-contents" placeholder="내용을 입력하세요" name="contents" th:text="${board.contents}"></textarea>
                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                     </div>
                 </div>
             </div>
-
-            <script type="text/javascript" src="/libs/smarteditor/js/service/HuskyEZCreator.js"></script>
-            <script>
-                var oEditors = [];
-                nhn.husky.EZCreator.createInIFrame({
-                    oAppRef: oEditors,
-                    elPlaceHolder: "write-contents",
-                    sSkinURI: "/libs/smarteditor/SmartEditor2Skin.html",
-                    fCreator: "createSEditor2"
-                })
-            </script>
-            <!-- Submit success message-->
-            <!---->
-            <!-- This is what your users will see when the form-->
-            <!-- has successfully submitted-->
             <div class="d-none" id="submitSuccessMessage">
                 <div class="text-center text-white mb-3">
                     <div class="fw-bolder">Form submission successful!</div>
@@ -76,19 +45,36 @@
                     <a href="https://startbootstrap.com/solution/contact-forms">https://startbootstrap.com/solution/contact-forms</a>
                 </div>
             </div>
-            <!-- Submit error message-->
-            <!---->
-            <!-- This is what your users will see when there is-->
-            <!-- an error submitting the form-->
             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
             <!-- Submit Button-->
-            <div class="text-center"><button class="btn btn-primary btn-xl text-uppercase disabled" id="submitButton" type="submit">Send Message</button></div>
+            <div class="text-center">
+                <button id="save-btn" class="btn btn-primary btn-xl text-uppercase" type="button">작성하기</button>
+            </div>
         </form>
     </div>
 </section>
 <!-- 푸터 -->
 <footer th:replace="fragments/memoLayout :: footerMain"></footer>
+<script type="text/javascript" src="/libs/smarteditor/js/service/HuskyEZCreator.js"></script>
 <!-- 스크립트 -->
 <script th:replace="fragments/memoLayout :: memo-global-script"></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        let oEditors = [];
+        nhn.husky.EZCreator.createInIFrame({
+            oAppRef: oEditors,
+            elPlaceHolder: "write-contents",
+            sSkinURI: "/libs/smarteditor/SmartEditor2Skin.html",
+            fCreator: "createSEditor2",
+
+        })
+        document.querySelector('#save-btn').addEventListener('click', (e) => {
+            if(!confirm('수정한 내용을 적용하시겠습니까??')) return;
+            oEditors.getById['write-contents'].exec("UPDATE_CONTENTS_FIELD", []);
+            document.querySelector('#memo-edit-form').submit();
+        })
+
+    });
+</script>
 </body>
 </html>

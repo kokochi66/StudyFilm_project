@@ -300,7 +300,6 @@
             elem.addEventListener('click', (e) => {
                 if(elem.classList.contains('confirm-btn') && !confirm(elem.getAttribute('data-confirm'))) return;
                 let parentForm = elem.closest('.action-form');
-                console.log(parentForm);
                 parentForm.action = elem.getAttribute('data-action')
                 parentForm.method = elem.getAttribute('data-method')
                 parentForm.submit();

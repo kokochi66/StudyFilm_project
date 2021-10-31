@@ -29,7 +29,7 @@ public class MemoBoardService {
     }
 
     public void updateMemoBoard(MemoBoardVO memoBoardVO) {
-        memoBoardRepository.save(memoBoardVO);
+        memoBoardRepository.updateBoard(memoBoardVO);
     }
 
     public void deleteMemoBoard(Long id) {

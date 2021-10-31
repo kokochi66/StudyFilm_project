@@ -7,19 +7,7 @@
 <nav th:replace="fragments/memoLayout :: navbarMain"></nav>
 <!-- 헤더 -->
 <header th:replace="fragments/memoLayout :: headerMain"></header>
-
-<style> /* [::필요::] css 파일로 옮기기 */
-.memo-section-box .form-group .form-control {
-    padding: 1.25rem;
-    margin-bottom: 2rem;
-}
-.memo-section-box .form-group-textarea .form-control {
-    height: 20rem;
-}
-
-</style>
-<!-- Memo-List-box -->
-<!-- Contact-->
+<!-- 컨텐츠 폼 -->
 <section class="page-section bg-light memo-section-box" id="memo-add-box">
     <div class="container">
         <div class="text-center">
@@ -68,8 +56,6 @@
 
 <!-- 푸터 -->
 <footer th:replace="fragments/memoLayout :: footerMain"></footer>
-<!-- Portfolio Modals-->
-<th:block th:replace="fragments/memoLayout :: portfolioPopup"></th:block>
 <script type="text/javascript" src="/libs/smarteditor/js/service/HuskyEZCreator.js"></script>
 <!-- 스크립트 -->
 <script th:replace="fragments/memoLayout :: memo-global-script"></script>

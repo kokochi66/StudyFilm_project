@@ -47,8 +47,11 @@ public class MemoController {
 
     // :: /edit :: 메모 수정 페이지
     @RequestMapping(value="/edit", method = RequestMethod.GET)
-    public String memoEditPage(Model model) {
-        log.info("TEST :: 메모 홈페이지 접근");
+    public String memoEditPage(Model model,
+                               @RequestParam(name = "id") Long id) {
+        log.info("/memo/edit 메로 수정 페이지");
+        MemoBoardVO board = memoBoardService.getMemoBoard(id);
+        model.addAttribute("board", board);
         return "memo/memo_edit";
     }
 
@@ -81,7 +84,7 @@ public class MemoController {
     public String memoAddProcess(Model model,
                                  @ModelAttribute MemoBoardVO memoBoardVO,
                                  @RequestParam(name = "masterId") Long masterId) {
-        log.info("/add :: 메모 추가 페이지");
+        log.info("/add/process POST :: 메모 추가 처리");
         MemoBoardMasterVO memoBoardMasterVO = new MemoBoardMasterVO();
         memoBoardMasterVO.setId(masterId);
         memoBoardVO.setMaster(memoBoardMasterVO);
@@ -89,6 +92,29 @@ public class MemoController {
 
         return "redirect:/memo/list?id="+masterId;
     }
+
+    // :: /edit/process :: 메모 수정 처리
+    @RequestMapping(value="/edit/process", method = RequestMethod.POST)
+    public String memoEditProcess(Model model,
+                                 @ModelAttribute MemoBoardVO memoBoardVO) {
+        log.info("/edit/process POST :: 메모 수정 처리");
+        memoBoardService.updateMemoBoard(memoBoardVO);
+
+        return "redirect:/memo/view?id="+memoBoardVO.getId();
+    }
+
+    // :: /delete/process :: 메모 삭제 처리
+    @RequestMapping(value="/delete/process", method = RequestMethod.POST)
+    public String memoDeleteProcess(Model model,
+                                    @RequestParam(name = "id") Long id,
+                                  @RequestParam(name = "masterId") Long masterId) {
+        log.info("/delete/process POST :: 메모 삭제 처리");
+        memoBoardService.deleteMemoBoard(id);
+
+        return "redirect:/memo/list?id="+masterId;
+    }
+
+
 
 
     // :: /master/add :: 게시판 추가 페이지
