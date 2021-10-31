@@ -13,6 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="/memo/css/styles.css" rel="stylesheet" />
+    <link href="/memo/css/memo.css" rel="stylesheet" />
 
     <!-- Font Awesome icons (free version)-->
     <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js" crossorigin="anonymous"></script>
@@ -290,8 +291,19 @@
         // [::] 경로 이동 스크립트
         document.querySelectorAll('.location-href').forEach((elem, idx) => {
             elem.addEventListener('click', (e) => {
+                if(elem.classList.contains('confirm-btn') && !confirm(elem.getAttribute('data-confirm'))) return;
                 location.href = elem.getAttribute('data-locationHref');
+            })
+        })
 
+        document.querySelectorAll('.form-submit').forEach((elem, idx) => {
+            elem.addEventListener('click', (e) => {
+                if(elem.classList.contains('confirm-btn') && !confirm(elem.getAttribute('data-confirm'))) return;
+                let parentForm = elem.closest('.action-form');
+                console.log(parentForm);
+                parentForm.action = elem.getAttribute('data-action')
+                parentForm.method = elem.getAttribute('data-method')
+                parentForm.submit();
             })
         })
         // [::] ===== //전체 공통 스크립트 ===== [::]

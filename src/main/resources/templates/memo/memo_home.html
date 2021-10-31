@@ -7,7 +7,7 @@
 <nav th:replace="fragments/memoLayout :: navbarMain"></nav>
 <!-- 헤더 -->
 <header th:replace="fragments/memoLayout :: headerMain"></header>
-<!-- Services-->
+<!-- 게시판 검색창 -->
 <section class="page-section" id="services">
     <div class="container">
         <div class="text-center">
@@ -30,8 +30,8 @@
         </div>
     </div>
 </section>
-<!-- Portfolio Grid-->
-<section class="page-section bg-light" id="portfolio">
+<!-- 최근문서 -->
+<section class="page-section bg-light" id="recent-master">
     <div class="container">
         <div class="text-center">
             <h2 class="section-heading text-uppercase">최신 수정 게시판</h2>
@@ -131,69 +131,20 @@
         </div>
     </div>
 </section>
-<!-- About-->
-<section class="page-section" id="about">
+<!-- 모든문서 -->
+<section class="page-section" id="all-master">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">About</h2>
-            <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+            <h2 class="section-heading text-uppercase">모든 문서</h2>
+            <h3 class="section-subheading text-muted">페이지의 모든 문서를 조회합니다.</h3>
         </div>
-        <ul class="timeline">
-            <li>
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="/memo/assets/img/about/1.jpg" alt="..." /></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4>2009-2011</h4>
-                        <h4 class="subheading">Our Humble Beginnings</h4>
-                    </div>
-                    <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                </div>
-            </li>
-            <li class="timeline-inverted">
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="/memo/assets/img/about/2.jpg" alt="..." /></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4>March 2011</h4>
-                        <h4 class="subheading">An Agency is Born</h4>
-                    </div>
-                    <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                </div>
-            </li>
-            <li>
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="/memo/assets/img/about/3.jpg" alt="..." /></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4>December 2015</h4>
-                        <h4 class="subheading">Transition to Full Service</h4>
-                    </div>
-                    <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                </div>
-            </li>
-            <li class="timeline-inverted">
-                <div class="timeline-image"><img class="rounded-circle img-fluid" src="/memo/assets/img/about/4.jpg" alt="..." /></div>
-                <div class="timeline-panel">
-                    <div class="timeline-heading">
-                        <h4>July 2020</h4>
-                        <h4 class="subheading">Phase Two Expansion</h4>
-                    </div>
-                    <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                </div>
-            </li>
-            <li class="timeline-inverted">
-                <div class="timeline-image">
-                    <h4>
-                        Be Part
-                        <br />
-                        Of Our
-                        <br />
-                        Story!
-                    </h4>
-                </div>
-            </li>
+        <ul class="list-group list-group-flush d-block text-center">
+            <li class="list-group-item d-inline-block col-5 border-bottom border-dark location-href btn btn-dark" style="cursor:pointer;"
+                th:each="master : ${masterList}" th:text="${master.name}" th:data-locationHref="${'/memo/list?id='+ master.id}"></li>
         </ul>
     </div>
 </section>
-<!-- Team-->
+<!-- 페이지소개 -->
 <section class="page-section bg-light" id="team">
     <div class="container">
         <div class="text-center">
@@ -263,13 +214,6 @@
             <h2 class="section-heading text-uppercase">Contact Us</h2>
             <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
         </div>
-        <!-- * * * * * * * * * * * * * * *-->
-        <!-- * * SB Forms Contact Form * *-->
-        <!-- * * * * * * * * * * * * * * *-->
-        <!-- This form is pre-integrated with SB Forms.-->
-        <!-- To make this form functional, sign up at-->
-        <!-- https://startbootstrap.com/solution/contact-forms-->
-        <!-- to get an API token!-->
         <form id="contactForm" data-sb-form-api-token="API_TOKEN">
             <div class="row align-items-stretch mb-5">
                 <div class="col-md-6">

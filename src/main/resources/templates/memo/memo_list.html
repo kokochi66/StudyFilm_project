@@ -16,10 +16,14 @@
 <section class="page-section bg-light" id="memo-list-box">
     <div class="container">
         <div class="text-center">
-            <h2 class="section-heading text-uppercase">게시판 제목이 들어갈 위치</h2>
-            <h3 class="section-subheading text-muted">이 게시판은 ~~입니다.</h3>
+            <h2 class="section-heading text-uppercase" th:text="${master.name}"></h2>
+            <h3 class="section-subheading text-muted" th:text="${master.description}"></h3>
         </div>
-        <button type="button" class="btn btn-info location-href" data-locationHref="/memo/add?id=" th:data-locationHref="${masterId}">글 작성</button>
+        <form class="action-form btn-group" action="" method="">
+            <input type="hidden" name="id" th:value="${master.id}">
+            <button type="button" class="btn btn-info location-href" th:data-locationHref="${'/memo/add?id=' + master.id}">글 작성</button>
+            <button type="button" class="btn btn-danger form-submit confirm-btn" data-confirm="게시판을 삭제하시겠습니까?" data-action="/memo/master/delete/process" data-method="post">게시판 삭제</button>
+        </form>
         <table class="table">
             <thead>
             <tr>
@@ -31,9 +35,11 @@
             </thead>
             <tbody>
             <tr th:each="board : ${boardList}">
-                <th></th>
+                <td th:text="${board.id}"></td>
                 <td th:text="${board.writer}"></td>
-                <td th:text="${board.title}"></td>
+                <td>
+                    <a th:href="${'/memo/view?id='+board.id}" th:text="${board.title}"></a>
+                </td>
                 <td th:text="${board.createdDate}"></td>
             </tr>
             </tbody>

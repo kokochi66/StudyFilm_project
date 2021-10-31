@@ -28,7 +28,6 @@ public class UserVO {
     private String userId;                  // 사용자 Id
 
     @Column(nullable = false)
-
     private String password;                // 사용자 비밀번호
 
     private String email;                   // 사용자 이메일

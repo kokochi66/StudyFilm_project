@@ -2,10 +2,12 @@ package com.kokochi.study.FilmProject.memo.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -30,8 +32,8 @@ public class MemoBoardMasterVO {
     private String description;             // 게시판 설명
 
     @Column(name = "CREATED_DATE", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable=false, nullable = false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;               //  생성 날짜
+    @CreationTimestamp
+    private LocalDateTime createdDate;               //  생성 날짜
 
     @OneToMany(mappedBy = "master")
     private List<MemoBoardVO> boardList = new ArrayList<>();

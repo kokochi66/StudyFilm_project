@@ -16,8 +16,25 @@ public class MemoBoardService {
 
     private final MemoBoardRepository memoBoardRepository;
 
-    public List<MemoBoardVO> getMemoBoardListFromMasterId(MemoBoardMasterVO memoBoardMaster) {
-
-        return null;
+    public List<MemoBoardVO> getMemoBoardListFromMasterId(Long masterId) {
+        return memoBoardRepository.findAllByMasterId(masterId);
     }
+
+    public MemoBoardVO getMemoBoard(Long id) {
+        return memoBoardRepository.findById(id).get();
+    }
+
+    public void addMemoBoard(MemoBoardVO memoBoardVO) {
+        memoBoardRepository.save(memoBoardVO);
+    }
+
+    public void updateMemoBoard(MemoBoardVO memoBoardVO) {
+        memoBoardRepository.save(memoBoardVO);
+    }
+
+    public void deleteMemoBoard(Long id) {
+        memoBoardRepository.deleteById(id);
+    }
+
+
 }

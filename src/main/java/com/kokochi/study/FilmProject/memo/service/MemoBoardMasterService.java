@@ -4,6 +4,7 @@ import com.kokochi.study.FilmProject.memo.domain.MemoBoardMasterVO;
 import com.kokochi.study.FilmProject.memo.repo.MemoBoardMasterRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,8 +27,8 @@ public class MemoBoardMasterService {
     }
 
     // 게시판 삭제하기 처리
-    public void deleteMemoBoardMaster(MemoBoardMasterVO memoBoardMasterVO) {
-        memoBoardMasterRepository.delete(memoBoardMasterVO);
+    public void deleteMemoBoardMaster(Long id) {
+        memoBoardMasterRepository.deleteById(id);
     }
 
     // 게시판 가져오기 처리
@@ -38,6 +39,11 @@ public class MemoBoardMasterService {
     // 게시판 목록 가져오기 처리
     public List<MemoBoardMasterVO> getMemoBoardMasterList() {
         return memoBoardMasterRepository.findAll();
+    }
+
+    // 게시판 목록 가져오기 이름 순
+    public List<MemoBoardMasterVO> getMemoBoardMasterListOrderByABC() {
+        return memoBoardMasterRepository.findAll(Sort.by(Sort.Direction.ASC, "name"));
     }
 
 

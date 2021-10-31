@@ -2,10 +2,12 @@ package com.kokochi.study.FilmProject.memo.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -38,7 +40,7 @@ public class MemoBoardVO {
     @Column(columnDefinition = "int default 0")
     private int readNum;                    // 조회수
 
-    @Column(columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable=false)
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdDate;          //  작성 날짜
+    @Column(name = "CREATED_DATE", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable=false, nullable = false)
+    @CreationTimestamp
+    private LocalDateTime createdDate;               //  생성 날짜
 }
