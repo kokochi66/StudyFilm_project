@@ -32,7 +32,7 @@
                 <div class="col-md-12">
                     <div class="form-group form-group-textarea mb-md-0">
                         <!-- Message input-->
-                        <textarea class="form-control" id="write-contents" placeholder="내용을 입력하세요" name="contents"></textarea>
+                        <div id="write-contents"></div>
                         <div class="invalid-feedback" data-sb-feedback="message:required">A message is required.</div>
                     </div>
                 </div>
@@ -56,105 +56,20 @@
 
 <!-- 푸터 -->
 <footer th:replace="fragments/memoLayout :: footerMain"></footer>
-<script type="text/javascript" src="/libs/smarteditor/js/service/jindo2.all.js"></script>
-<script type="text/javascript" src="/libs/smarteditor/js/service/HuskyEZCreator.js"></script>
-<script type="text/javascript" src="/libs/smarteditor/js/service/hp_SE2M_AttachQuickPhoto.js"></script>
 <!-- 스크립트 -->
 <script th:replace="fragments/memoLayout :: memo-global-script"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        let oEditors = [];
-        nhn.husky.EZCreator.createInIFrame({
-            oAppRef: oEditors,
-            elPlaceHolder: "write-contents",
-            sSkinURI: "/libs/smarteditor/SmartEditor2Skin.html",
-            htParams : {
-                bUseToolbar : true,    // 툴바 사용 여부 (true:사용/ false:사용하지 않음)
-                bUseVerticalResizer : true,  // 입력창 크기 조절바 사용 여부 (true:사용/ false:사용하지 않음)
-                bUseModeChanger : true,   // 모드 탭(Editor | HTML | TEXT) 사용 여부 (true:사용/ false:사용하지 않음)
-                //bSkipXssFilter : true,  // client-side xss filter 무시 여부 (true:사용하지 않음 / 그외:사용)
-                //aAdditionalFontList : aAdditionalFontSet,  // 추가 글꼴 목록
-                fOnBeforeUnload : function(){
-                    alert("완료!");
-                },
-                I18N_LOCALE : "ko_KR"
-            }, //boolean
-            fOnAppLoad : function(){
-                //예제 코드
-                //oEditors.getById["content"].exec("PASTE_HTML", ["로딩이 완료된 후에 본문에 삽입되는 text입니다."]);
-            },
-            fCreator: "createSEditor2"
-        })
 
+    document.addEventListener("DOMContentLoaded", function(){
 
-
-        function pasteHTML(filepath) {
-
-// var sHTML = "<span style='color:#FF0000;'>이미지도 같은 방식으로 삽입합니다.<\/span>";
-            var sHTML = '<span style="color:#FF0000;"><img src="'+filepath+'"></span>';
-            oEditors.getById["content"].exec("PASTE_HTML", [sHTML]);
-        }
-
-
-
-        function showHTML() {
-            var sHTML = oEditors.getById["content"].getIR();
-            alert(sHTML);
-        }
-
-        function submitContents(elClickedObj) {
-            oEditors.getById["content"].exec("UPDATE_CONTENTS_FIELD", []); // 에디터의 내용이 textarea에 적용됩니다.
-
-
-            // 에디터의 내용에 대한 값 검증은 이곳에서 document.getElementById("content").value를 이용해서 처리하면 됩니다.
-
-            try {
-
-                var form2 = document.f;
-                if (!form2.name.value) {
-                    alert("작성자 이름을 입력해 주십시오");
-                    form2.name.focus();
-                    return;
-                }
-
-
-
-                if (!form2.subject.value) {
-                    alert("글제목을 입력해 주십시오.");
-                    form2.subject.focus();
-                    return;
-                }
-
-
-
-                if (document.getElementById("content").value=="<p><br></p>") {
-                    alert("내용을 입력해 주세요.");
-                    oEditors.getById["content"].exec("FOCUS",[]);
-                    return;
-                }
-
-
-
-                form2.action="notice_write_ok.php";
-                //elClickedObj.form.submit();
-                form2.submit();
-            } catch(e) {alert(e);}
-        }
-
-
-
-        function setDefaultFont() {
-            var sDefaultFont = '궁서';
-            var nFontSize = 24;
-            oEditors.getById["content"].setDefaultFont(sDefaultFont, nFontSize);
-        }
-
-
-        function writeReset() {
-            document.f.reset();
-            oEditors.getById["content"].exec("SET_IR", [""]);
-
-        }
+        const Editor = toastui.Editor;
+        const editor = new Editor({
+            el: document.querySelector('#write-contents'),
+            height: '600px',
+            viewer: true,
+            initialEditType: 'markdown',
+            previewStyle: 'vertical'
+        });
 
         document.querySelector('#save-btn').addEventListener('click', (e) => {
             if(!confirm('게시글을 작성하시겠습니까?')) return;
