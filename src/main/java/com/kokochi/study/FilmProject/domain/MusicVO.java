@@ -1,4 +1,4 @@
-package com.kokochi.study.FilmProject.ex;
+package com.kokochi.study.FilmProject.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class Music {
+public class MusicVO {
     public static final String ID = "id";
     public static final String FIRST_NAME = "firstName";
     public static final String LAST_NAME = "lastName";

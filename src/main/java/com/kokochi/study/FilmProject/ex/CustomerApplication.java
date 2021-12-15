@@ -1,15 +1,11 @@
 package com.kokochi.study.FilmProject.ex;
 
+import com.kokochi.study.FilmProject.domain.MusicVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.mongodb.core.MongoTemplate;
-import org.springframework.data.mongodb.core.query.Criteria;
-import org.springframework.data.mongodb.core.query.Query;
 
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -52,7 +48,7 @@ public class CustomerApplication implements CommandLineRunner {
         , Customer.class);*/
         // 기본 예제
 
-        Music m = new Music();
+        MusicVO m = new MusicVO();
         m.setVocal("머드 더 스튜던트");
         m.setTitle("불협화음");
         m.setFileName("merryGoRound");
@@ -92,7 +88,7 @@ public class CustomerApplication implements CommandLineRunner {
 //        List<Music> after = musicRepository.findByCategoryListAfter("61b98aa9145b7036b0d646c4");
 //        List<Music> bef = musicRepository.findByCategoryListBefore("61b98aa9145b7036b0d646c4");
 //        List<Music> containing = musicRepository.findByCategoryListContaining("61b98aa9145b7036b0d646c4");
-        List<Music> contains = musicRepository.findByCategoryListContains("61b99079f891055402d0fe0b");
+        List<MusicVO> contains = musicRepository.findByCategoryListContains("61b99079f891055402d0fe0b");
 //        List<Music> notContains = musicRepository.findByCategoryListNotContains("61b98aa9145b7036b0d646c4");
 //        List<Music> endingWith = musicRepository.findByCategoryListEndingWith("61b98aa9145b7036b0d646c4");
 //        List<Music> endsWith = musicRepository.findByCategoryListEndsWith("61b98aa9145b7036b0d646c4");
@@ -101,7 +97,7 @@ public class CustomerApplication implements CommandLineRunner {
 //        for (Music category : after) {System.out.println("after :: " + category);}
 //        for (Music category : bef) {System.out.println("bef :: " + category);}
 //        for (Music category : containing) {System.out.println("containing :: " + category);}
-        for (Music category : contains) {System.out.println("contains :: " + category);}
+        for (MusicVO category : contains) {System.out.println("contains :: " + category);}
 //        for (Music category : notContains) {System.out.println("notContains :: " + category);}
 //        for (Music category : endingWith) {System.out.println("endingWith :: " + category);}
 //        for (Music category : endsWith) {System.out.println("endsWith :: " + category);}

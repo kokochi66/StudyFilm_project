@@ -1,4 +1,4 @@
-package com.kokochi.study.FilmProject.ex;
+package com.kokochi.study.FilmProject.domain;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -12,7 +12,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
-public class Category {
+public class CategoryVO {
     @Id
     private String id;
     private String categoryName;        // 카테고리 이름

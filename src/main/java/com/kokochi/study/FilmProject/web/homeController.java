@@ -4,6 +4,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 @Log4j2
@@ -11,9 +12,10 @@ public class homeController {
 
 
     @RequestMapping(value="/", method = RequestMethod.GET)
-    public String home() {
+    public ModelAndView home(ModelAndView mav) {
         log.info("/ :: 홈 컨트롤러 매핑");
-        return "home";
+        mav.setViewName("home");
+        return mav;
     }
 
     @RequestMapping(value="/layout", method = RequestMethod.GET)
