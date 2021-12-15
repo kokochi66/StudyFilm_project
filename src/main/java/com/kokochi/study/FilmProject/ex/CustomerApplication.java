@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-@SpringBootApplication
+//@SpringBootApplication
 public class CustomerApplication implements CommandLineRunner {
 
     @Autowired
