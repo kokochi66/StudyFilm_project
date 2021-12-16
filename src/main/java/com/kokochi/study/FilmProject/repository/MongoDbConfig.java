@@ -1,4 +1,4 @@
-package com.kokochi.study.FilmProject.ex;
+package com.kokochi.study.FilmProject.repository;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;

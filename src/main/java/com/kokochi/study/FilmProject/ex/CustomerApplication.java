@@ -1,6 +1,8 @@
 package com.kokochi.study.FilmProject.ex;
 
 import com.kokochi.study.FilmProject.domain.MusicVO;
+import com.kokochi.study.FilmProject.repository.CategoryRepository;
+import com.kokochi.study.FilmProject.repository.MusicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -48,17 +50,17 @@ public class CustomerApplication implements CommandLineRunner {
         , Customer.class);*/
         // 기본 예제
 
-        MusicVO m = new MusicVO();
-        m.setVocal("머드 더 스튜던트");
-        m.setTitle("불협화음");
-        m.setFileName("merryGoRound");
-        m.setExtension("mp3");
-        m.setSize(30000);
-        m.setRegDate(new Date());
-        m.setReadNum(0);
-        m.setHighlight("01:12");
-        m.setPoint(0);
-        musicRepository.insert(m);
+//        MusicVO m = new MusicVO();
+//        m.setVocal("머드 더 스튜던트");
+//        m.setTitle("불협화음");
+//        m.setFileName("merryGoRound");
+//        m.setExtension("mp3");
+//        m.setSize(30000);
+//        m.setRegDate(new Date());
+//        m.setReadNum(0);
+//        m.setHighlight("01:12");
+//        m.setPoint(0);
+//        musicRepository.insert(m);
 
 //        Category cat = new Category();
 //        cat.setCategoryName("재밌음");

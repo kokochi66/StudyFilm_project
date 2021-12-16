@@ -24,11 +24,10 @@ public class MusicVO {
     private String title;           // 노래제목
     private String fileName;        // 파일이름
     private String extension;       // 확장자
-    private Integer size;           // 파일크기
+    private Long size;           // 파일크기
     private Date regDate;           // 등록일자
-    private Integer readNum;        // 재생수
+    private Long readNum;        // 재생수
     private String highlight;       // 하이라이트 시간
-    private Integer point;          // 인기점수
+    private Long point;          // 인기점수
     private List<String> categoryList;        // 카테고리 리스트
-
 }

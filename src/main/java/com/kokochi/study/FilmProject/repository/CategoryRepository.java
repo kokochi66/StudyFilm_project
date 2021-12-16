@@ -1,5 +1,5 @@
 
-package com.kokochi.study.FilmProject.ex;
+package com.kokochi.study.FilmProject.repository;
 
 import com.kokochi.study.FilmProject.domain.CategoryVO;
 import org.springframework.data.mongodb.repository.MongoRepository;
