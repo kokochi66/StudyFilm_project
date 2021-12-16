@@ -36,7 +36,6 @@ public class MusicServiceImpl implements MusicService {
     @Override
     public void musicAdd(MusicVO musicVO) throws Exception {
         musicRepository.insert(musicVO);
-        int a = 0/0;
     }
 
     @Override

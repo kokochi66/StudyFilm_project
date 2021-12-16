@@ -90,7 +90,7 @@ public class CustomerApplication implements CommandLineRunner {
 //        List<Music> after = musicRepository.findByCategoryListAfter("61b98aa9145b7036b0d646c4");
 //        List<Music> bef = musicRepository.findByCategoryListBefore("61b98aa9145b7036b0d646c4");
 //        List<Music> containing = musicRepository.findByCategoryListContaining("61b98aa9145b7036b0d646c4");
-        List<MusicVO> contains = musicRepository.findByCategoryListContains("61b99079f891055402d0fe0b");
+//        List<MusicVO> contains = musicRepository.findByCategoryListContains("61b99079f891055402d0fe0b");
 //        List<Music> notContains = musicRepository.findByCategoryListNotContains("61b98aa9145b7036b0d646c4");
 //        List<Music> endingWith = musicRepository.findByCategoryListEndingWith("61b98aa9145b7036b0d646c4");
 //        List<Music> endsWith = musicRepository.findByCategoryListEndsWith("61b98aa9145b7036b0d646c4");
@@ -99,7 +99,7 @@ public class CustomerApplication implements CommandLineRunner {
 //        for (Music category : after) {System.out.println("after :: " + category);}
 //        for (Music category : bef) {System.out.println("bef :: " + category);}
 //        for (Music category : containing) {System.out.println("containing :: " + category);}
-        for (MusicVO category : contains) {System.out.println("contains :: " + category);}
+//        for (MusicVO category : contains) {System.out.println("contains :: " + category);}
 //        for (Music category : notContains) {System.out.println("notContains :: " + category);}
 //        for (Music category : endingWith) {System.out.println("endingWith :: " + category);}
 //        for (Music category : endsWith) {System.out.println("endsWith :: " + category);}
